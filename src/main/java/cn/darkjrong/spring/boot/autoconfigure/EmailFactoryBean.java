@@ -64,8 +64,7 @@ public class EmailFactoryBean implements FactoryBean<EmailTemplate>, Initializin
         Assert.notBlank(emailProperties.getPassword(),
                 String.format(ExceptionEnum.THE_PROPERTY_CANNOT_BE_EMPTY.getValue(), "password"));
 
-        emailTemplate = new EmailTemplate();
-        emailTemplate.setEmailProperties(emailProperties);
+        emailTemplate = new EmailTemplate(emailProperties);
     }
 
 
