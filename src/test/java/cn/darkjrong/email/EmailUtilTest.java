@@ -53,11 +53,10 @@ public class EmailUtilTest {
         emailProperties.setSslEnable(Boolean.TRUE);
         emailProperties.setDebug(Boolean.FALSE);
         emailProperties.setName("贾荣");
-        emailProperties.setUsername("852203465@qq.com");
-        emailProperties.setPassword("lenuiyivrybsbbbi");
+        emailProperties.setUsername("85465@qq.com");
+        emailProperties.setPassword("2312312");
 
-        emailTemplate = new EmailTemplate();
-        emailTemplate.setEmailProperties(emailProperties);
+        emailTemplate = new EmailTemplate(emailProperties);
 
     }
 

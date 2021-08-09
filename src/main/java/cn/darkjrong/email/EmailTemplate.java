@@ -30,9 +30,9 @@ public class EmailTemplate {
     /**
      * 电子邮件属性
      */
-    private EmailProperties emailProperties;
+    private final EmailProperties emailProperties;
 
-    public void setEmailProperties(EmailProperties emailProperties) {
+    public EmailTemplate(EmailProperties emailProperties) {
         this.emailProperties = emailProperties;
     }
 
