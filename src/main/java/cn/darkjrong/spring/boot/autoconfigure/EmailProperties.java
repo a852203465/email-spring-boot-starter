@@ -31,6 +31,11 @@ public class EmailProperties {
     private Integer port = 465;
 
     /**
+     *  是否免认证， 默认：false
+     */
+    private Boolean avoidAuthEnable = Boolean.FALSE;
+
+    /**
      * 发件人账号
      */
     private String username;
@@ -39,11 +44,6 @@ public class EmailProperties {
      * 发件人账号-授权码、密码
      */
     private String password;
-
-    /**
-     * 发件人名称
-     */
-    private String name;
 
     /**
      * 是否开启SSL协议, 默认开启
@@ -102,6 +102,11 @@ public class EmailProperties {
     private Pop3 pop3 = new Pop3();
 
     /**
+     * 发件人
+     */
+    private From from = new From();
+
+    /**
      * pop3
      *
      * @author Rong.Jia
@@ -131,6 +136,29 @@ public class EmailProperties {
         private String popPassword;
 
     }
+
+    /**
+     * 发件人信息
+     *
+     * @author Rong.Jia
+     * @date 2021/08/10 09:03:57
+     */
+    @Data
+    public static class From {
+
+        /**
+         *  发件人
+         */
+        private String name = "";
+
+        /**
+         *  发件人邮箱
+         */
+        private String email;
+
+    }
+
+
 
     public String getCharset() {
         return StrUtil.isBlank(charset) ? CharsetUtil.UTF_8 : charset;

@@ -1,6 +1,7 @@
 package cn.darkjrong.email;
 
 import cn.darkjrong.email.domain.EmailTo;
+import cn.darkjrong.spring.boot.autoconfigure.EmailFactoryBean;
 import cn.darkjrong.spring.boot.autoconfigure.EmailProperties;
 import org.junit.Test;
 
@@ -25,24 +26,28 @@ public class EmailUtilTest {
 
     static {
 
+        EmailProperties.From from = new EmailProperties.From();
+        from.setEmail("a@163.com");
+        from.setName("贾荣");
+
         EmailTo to = new EmailTo();
-        to.setMail("rong.jia@xdcplus.com");
-        to.setName("贾荣1");
+        to.setMail("a@163.com");
+        to.setName("a");
         toList.add(to);
 
         EmailTo cc = new EmailTo();
-        cc.setMail("martin.ji@xdcplus.com");
-        cc.setName("嵇浩");
+        cc.setMail("a@163.com");
+        cc.setName("a");
         ccList.add(cc);
 
         EmailTo bcc = new EmailTo();
-        bcc.setMail("fish.fei@xdcplus.com");
-        bcc.setName("费戌辉");
+        bcc.setMail("a@163.com");
+        bcc.setName("a");
         bccList.add(bcc);
 
         EmailTo reply = new EmailTo();
-        reply.setMail("black.hua@xdcplus.com");
-        reply.setName("华俊龙");
+        reply.setMail("a@163.com");
+        reply.setName("a");
         replyList.add(reply);
 
         EmailProperties emailProperties = new EmailProperties();
@@ -52,12 +57,14 @@ public class EmailUtilTest {
 
         emailProperties.setSslEnable(Boolean.TRUE);
         emailProperties.setDebug(Boolean.FALSE);
-        emailProperties.setName("贾荣");
         emailProperties.setUsername("85465@qq.com");
         emailProperties.setPassword("2312312");
 
-        emailTemplate = new EmailTemplate(emailProperties);
+        emailProperties.setFrom(from);
 
+        EmailFactoryBean factoryBean = new EmailFactoryBean(emailProperties);
+        factoryBean.afterPropertiesSet();
+        emailTemplate = factoryBean.getObject();
     }
 
     @Test

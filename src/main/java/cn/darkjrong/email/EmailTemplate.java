@@ -1017,12 +1017,14 @@ public class EmailTemplate {
         email.setSSLCheckServerIdentity(emailProperties.getSslCheckServerIdentity());
         email.setHostName(emailProperties.getHost());
         EmailUtil.setPort(email, emailProperties.getSslEnable(), emailProperties.getPort());
-        email.setAuthentication(emailProperties.getUsername(), emailProperties.getPassword());
+        if (!emailProperties.getAvoidAuthEnable()) {
+            email.setAuthentication(emailProperties.getUsername(), emailProperties.getPassword());
+        }
         email.setSSLOnConnect(emailProperties.getSslEnable());
         email.setCharset(emailProperties.getCharset());
         email.setSubject(subject);
-        email.setFrom(emailProperties.getUsername(),
-                emailProperties.getName(), emailProperties.getCharset());
+        email.setFrom(emailProperties.getFrom().getEmail(),
+                emailProperties.getFrom().getName(), emailProperties.getCharset());
         EmailUtil.setDate(email, date);
         EmailUtil.setMsg(email, message);
         email.setDebug(emailProperties.getDebug());
