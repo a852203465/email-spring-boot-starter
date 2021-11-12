@@ -3,7 +3,8 @@ package cn.darkjrong.email;
 import cn.darkjrong.email.domain.EmailTo;
 import cn.darkjrong.spring.boot.autoconfigure.EmailFactoryBean;
 import cn.darkjrong.spring.boot.autoconfigure.EmailProperties;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -24,31 +25,33 @@ public class EmailUtilTest {
     private static List<EmailTo> ccList = new ArrayList<>();
     private static List<EmailTo> replyList = new ArrayList<>();
 
-    static {
+
+    @BeforeEach
+    public void setUp() {
 
         EmailProperties.From from = new EmailProperties.From();
-        from.setEmail("a@163.com");
+        from.setEmail("852203465@qq.com");
         from.setName("贾荣");
 
         EmailTo to = new EmailTo();
-        to.setMail("a@163.com");
+        to.setMail("852203465@qq.com");
         to.setName("a");
         toList.add(to);
 
-        EmailTo cc = new EmailTo();
-        cc.setMail("a@163.com");
-        cc.setName("a");
-        ccList.add(cc);
-
-        EmailTo bcc = new EmailTo();
-        bcc.setMail("a@163.com");
-        bcc.setName("a");
-        bccList.add(bcc);
-
-        EmailTo reply = new EmailTo();
-        reply.setMail("a@163.com");
-        reply.setName("a");
-        replyList.add(reply);
+//        EmailTo cc = new EmailTo();
+//        cc.setMail("a@163.com");
+//        cc.setName("a");
+//        ccList.add(cc);
+//
+//        EmailTo bcc = new EmailTo();
+//        bcc.setMail("a@163.com");
+//        bcc.setName("a");
+//        bccList.add(bcc);
+//
+//        EmailTo reply = new EmailTo();
+//        reply.setMail("a@163.com");
+//        reply.setName("a");
+//        replyList.add(reply);
 
         EmailProperties emailProperties = new EmailProperties();
         emailProperties.setEnabled(Boolean.TRUE);
@@ -57,14 +60,15 @@ public class EmailUtilTest {
 
         emailProperties.setSslEnable(Boolean.TRUE);
         emailProperties.setDebug(Boolean.FALSE);
-        emailProperties.setUsername("85465@qq.com");
-        emailProperties.setPassword("2312312");
+        emailProperties.setUsername("852203465@qq.com");
+        emailProperties.setPassword("bmfoaubvqkicbcbi");
 
         emailProperties.setFrom(from);
 
         EmailFactoryBean factoryBean = new EmailFactoryBean(emailProperties);
         factoryBean.afterPropertiesSet();
         emailTemplate = factoryBean.getObject();
+
     }
 
     @Test

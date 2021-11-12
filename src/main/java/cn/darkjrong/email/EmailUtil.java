@@ -37,7 +37,7 @@ import java.util.List;
  * @author Rong.Jia
  * @date 2021/07/26 13:11:22
  */
-public class EmailUtil {
+class EmailUtil {
 
     private static final String PROTOCOL_REG = "^(http|https|ftp)://.*$";
     private static final Logger logger = LoggerFactory.getLogger(EmailUtil.class);
