@@ -42,7 +42,7 @@ email:
 ```java
     
     @Autowired
-    private RestTemplateUtils restTemplateUtils;
+    private EmailTemplate emailTemplate;
 
 ```
 
@@ -66,7 +66,7 @@ email:
                toList.add(to);
        
                String htmlEmailTemplate = "<html>The apache logo - <img src=\"http://www.apache.org/images/asf_logo_wide.gif\"></html>";
-               System.out.println(EmailUtil.sendHtml(emailAccount, "测试发送html", htmlEmailTemplate, toList));
+               System.out.println(emailTemplate.sendHtml(emailAccount, "测试发送html", htmlEmailTemplate, toList));
             }
 ```
 
